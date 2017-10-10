@@ -12,19 +12,19 @@ def inlezen_beginstation(stations):
 
 def inlezen_eindstation(stations, beginstation_index):
     eindstation= input('Geef uw eindstation: ')
-    if eindstation not in stations:
+    while eindstation not in stations:
         print('Deze trein komt niet in ', eindstation)
-    else:
+        return eindstation
+    eindindex= stations.index(eindstation)
+    while eindindex > beginstation_index:
         print('Uw eindstation: ', eindstation)
-        eindindex= stations.index(eindstation)
-        if eindindex > beginstation_index:
-            return stations.index(eindstation)
-        else:
-           print('Eindstation ligt voor beginstation')
-
+        return stations.index(eindstation)
+    else:
+        print('Eindstation ligt voor beginstation.')
+        return eindstation
 
 def omroepen_reis(stations, beginstation_index, eindstation_index):
-    print('Het beginstation',stations[beginstation_index],'is het',beginstation_index+1,'e station in het traject.')
+    print('Het beginstation',stations[beginstation_index],'is het',beginstation_index +1,'e station in het traject.')
     print('Het eindstation',stations[eindstation_index],'is het',eindstation_index + 1,'e station in het traject.')
     print('De afstand bedraagd',eindstation_index - beginstation_index,'station(s).')
     print('De prijs van het kaartje is',(eindstation_index - beginstation_index)*5,'euro','\n')
